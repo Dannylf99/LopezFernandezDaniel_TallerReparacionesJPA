@@ -11,35 +11,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.PruebaSpringDataJPA.entities.Persona;
-import com.example.PruebaSpringDataJPA.repository.PersonaRepository;
+import com.example.PruebaSpringDataJPA.repository.ClienteRepository;
+
+import entities.Cliente;
 
 @RestController
-@RequestMapping("/personas")
-public class PersonaController {
+@RequestMapping("/cliente")
+public class ClienteController {
 
-	private final PersonaRepository repo;
+	private final ClienteRepository repo;
 	
-	public PersonaController(PersonaRepository repo) {
+	public ClienteController(ClienteRepository repo) {
 		this.repo = repo;
 	}
 	
 	// Get
 	
 	@GetMapping
-	public List<Persona> getAll(){
+	public List<Cliente> getAll(){
 		return this.repo.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Persona getById(@PathVariable Long id) {
+	public Cliente getById(@PathVariable Long id) {
 		return repo.findById(id).orElse(null);
 	}
 	
 	// Post
 	
 	@PostMapping
-	public Persona create(@RequestBody Persona persona) {
+	public Cliente create(@RequestBody Cliente persona) {
 		return repo.save(persona);
 	};
 	
@@ -47,8 +48,8 @@ public class PersonaController {
 	// Put
 	
 	@PutMapping("/{id}")
-	public Persona update(@PathVariable Long id, @RequestBody Persona persona) {
-		Persona p = repo.findById(id).orElseThrow();
+	public Cliente update(@PathVariable Long id, @RequestBody Cliente persona) {
+		Cliente p = repo.findById(id).orElseThrow();
 		p.setNombre(persona.getNombre());
 		p.setEdad(persona.getEdad());
 		repo.save(p);
@@ -57,7 +58,7 @@ public class PersonaController {
 	
 	// Delete
 	@DeleteMapping("/{id}")
-	public List<Persona> delete(@PathVariable Long id) {
+	public List<Cliente> delete(@PathVariable Long id) {
 		repo.deleteById(id);
 		System.out.println("Persona con id: " + id +" eliminada correctamente.");
 		return repo.findAll();

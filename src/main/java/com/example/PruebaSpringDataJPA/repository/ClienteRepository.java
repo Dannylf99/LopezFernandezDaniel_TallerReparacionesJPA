@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.PruebaSpringDataJPA.entities.Persona;
+import entities.Cliente;
 
-public interface PersonaRepository extends JpaRepository<Persona, Long> {
+public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 	// Ejemplos de consultas derivadas
-	Persona findByNombre(String nombre);
-	List<Persona> findByEdadGreaterThan(int edad);
+	Cliente findByNombre(String nombre);
+	List<Cliente> findByEdadGreaterThan(int edad);
 	
 	// Genera automaticamente
-	Persona save(Persona persona);
+	// Persona save(Persona persona);
 	// findAll(),
 	// findById(id),
 	// delete(entity),

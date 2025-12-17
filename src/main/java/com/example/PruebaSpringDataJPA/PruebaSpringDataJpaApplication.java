@@ -5,8 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.example.PruebaSpringDataJPA.entities.Persona;
-import com.example.PruebaSpringDataJPA.repository.PersonaRepository;
+import com.example.PruebaSpringDataJPA.repository.ClienteRepository;
+
+import entities.Cliente;
 
 @SpringBootApplication
 public class PruebaSpringDataJpaApplication {
@@ -16,12 +17,12 @@ public class PruebaSpringDataJpaApplication {
 	}
 
 	@Bean
-	public CommandLineRunner test(PersonaRepository pRepo) {
+	public CommandLineRunner test(ClienteRepository pRepo) {
 		return args -> {
 			// INSERT
-			pRepo.save(new Persona("Daniel", 46));
-			pRepo.save(new Persona("Sara1", 25));
-			pRepo.save(new Persona("Sara2", 20));
+			pRepo.save(new Cliente("Daniel", 46));
+			pRepo.save(new Cliente("Sara1", 25));
+			pRepo.save(new Cliente("Sara2", 20));
 
 			// SELECT ALL
 			System.out.println("Personas en BD:");
@@ -30,7 +31,7 @@ public class PruebaSpringDataJpaApplication {
 			);
 
 			// SELECT BY ID
-			Persona p = pRepo.findById(1L).orElse(null);
+			Cliente p = pRepo.findById(1L).orElse(null);
 			System.out.println("Persona con ID 1:" + 
 					(p != null ? 
 							p.getNombre() :
