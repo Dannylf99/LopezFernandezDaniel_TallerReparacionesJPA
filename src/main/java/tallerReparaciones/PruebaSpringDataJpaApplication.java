@@ -1,4 +1,4 @@
-package tallerReparaciones.PruebaSpringDataJPA;
+package tallerReparaciones;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

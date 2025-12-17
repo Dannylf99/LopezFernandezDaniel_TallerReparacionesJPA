@@ -26,7 +26,7 @@ public class UsuarioService {
     }
     
     // Buscar usuario por DNI
-    public Optional<Usuario> findByDni(String dni) {
+    public Usuario findByDni(String dni) {
         return usuarioRepository.findByDni(dni);
     }
     

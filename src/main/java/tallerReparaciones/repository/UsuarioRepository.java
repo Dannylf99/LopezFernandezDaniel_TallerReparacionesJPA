@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     
     // Consulta derivada: Buscar usuario por DNI
-    Optional<Usuario> findByDni(String dni);
+    Usuario findByDni(String dni);
     
     // Consulta derivada: Buscar usuario por DNI y contraseña (para login)
     Optional<Usuario> findByDniAndPassword(String dni, String password);

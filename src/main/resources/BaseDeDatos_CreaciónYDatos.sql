@@ -76,10 +76,10 @@ INSERT INTO cliente (nombre, dni, telefono, email) VALUES
 -- INSERTS DE USUARIOS
 -- ============================================
 INSERT INTO usuario (nombre_usuario, dni, password, rol) VALUES
-('admin', '12345678A', '$2a$10$N9qo8uLOickgx2ZMRZoMye1J8Qg6ViUj3N5l5f5Z5Z5Z5Z5Z5Z5Z5', 'ADMINISTRADOR'),
-('mecanico1', '12345678B', '$2a$10$N9qo8uLOickgx2ZMRZoMye1J8Qg6ViUj3N5l5f5Z5Z5Z5Z5Z5Z5Z5', 'MECANICO'),
-('mecanico2', '12345678C', '$2a$10$N9qo8uLOickgx2ZMRZoMye1J8Qg6ViUj3N5l5f5Z5Z5Z5Z5Z5Z5Z5', 'MECANICO'),
-('invitado', '12345678D', '$2a$10$N9qo8uLOickgx2ZMRZoMye1J8Qg6ViUj3N5l5f5Z5Z5Z5Z5Z5Z5Z5', 'INVITADO');
+('admin',     '12345678A', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'ADMINISTRADOR'),
+('mecanico1', '12345678B', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'MECANICO'),
+('mecanico2', '12345678C', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'MECANICO'),
+('invitado',  '12345678D', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'INVITADO');
 
 -- ============================================
 -- INSERTS DE VEHÍCULOS

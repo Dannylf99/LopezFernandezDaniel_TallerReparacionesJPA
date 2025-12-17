@@ -78,6 +78,31 @@ public class ClienteController {
         }
     }
     
+    
+    @PatchMapping("/{id}")
+    public Cliente updateClienteParcial(@PathVariable Long id, @RequestBody Cliente cliente) {
+        try {
+        	Cliente clienteDB = clienteService.findById(id).orElseThrow();
+        	if(cliente.getDni() != null) {
+        		clienteDB.setDni(cliente.getDni());
+        	}
+        	if(cliente.getEmail() != null) {
+        		clienteDB.setEmail(cliente.getEmail());
+        	}
+        	if(cliente.getNombre() != null) {
+        		clienteDB.setNombre(cliente.getNombre());
+        	}
+        	if(cliente.getTelefono() != null) {
+        		clienteDB.setTelefono(cliente.getTelefono());
+        	}
+        	return clienteService.save(clienteDB);
+        } catch (IllegalArgumentException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return null;
+        }
+    }
+    
     /**
      * CU5: Borrar un cliente
      * DELETE /api/clientes/{id}

@@ -31,18 +31,19 @@ public class EstadisticasController {
     /**
      * CU6: Número de reparaciones por estado
      * GET /api/estadisticas/reparacionesPorEstado
-     * Respuesta: {
-     *   "PENDIENTE": 10,
-     *   "EN_REPARACION": 5,
-     *   "FINALIZADO": 20
-     * }
+     * 
+     * Hago una lista con los estado, 
      */
     @GetMapping("/reparacionesPorEstado")
     public ResponseEntity<Map<String, Object>> getReparacionesPorEstado() {
         List<Object[]> resultados = reparacionService.countByEstado();
         
+        //Creamos un mapeado en hash que sirva para guardar las estadísticas.
         Map<String, Object> estadisticas = new HashMap<>();
+        
+        //Recorro en un bucle los objetos
         for (Object[] resultado : resultados) {
+        //Hago un put en las estadísticas para luego devolverlas de los resultados.
             estadisticas.put(resultado[0].toString(), resultado[1]);
         }
         

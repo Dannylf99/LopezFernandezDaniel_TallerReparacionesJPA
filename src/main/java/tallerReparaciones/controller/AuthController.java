@@ -25,19 +25,32 @@ public class AuthController {
      * Body: { "dni": "12345678A", "password": "admin123" }
      * Respuesta: { "mensaje": "Login correcto", "usuario": {...} }
      */
+    
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody LoginRequest request) {
         Map<String, Object> response = new HashMap<>();
-        
+
         try {
-            // Validar credenciales
-            Usuario usuario = usuarioService.login(request.getDni(), request.getPassword())
-                    .orElseThrow(() -> new IllegalArgumentException("Credenciales incorrectas"));
+            // Buscar usuario por DNI
+            Usuario usuario = usuarioService.findByDni(request.getDni());
             
+            // Verificar contraseña hasheada
+            boolean passwordOk = PasswordUtils.verifyPassword(
+                    request.getPassword(),
+                    usuario.getPassword()
+            );
+            
+
+            if (!passwordOk) {
+                throw new IllegalArgumentException("Credenciales incorrectas");
+            }
+
+
             response.put("mensaje", "Login correcto");
             response.put("usuario", usuario);
+
             return ResponseEntity.ok(response);
-            
+
         } catch (IllegalArgumentException e) {
             response.put("mensaje", "Error: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
